@@ -712,7 +712,7 @@ void gr_flip() {
   gr_draw = gr_backend->Flip();
 }
 
-int gr_init(void)
+int gr_init_real(void)
 {
   gr_init_font();
 
@@ -724,6 +724,13 @@ int gr_init(void)
         printf("Using overlay graphics.\n");
     }
 #endif
+
+int gr_init(void)
+{
+	gr_init_real();
+	gr_init_real();
+	return 0;
+}
 
 #ifndef MSM_BSP
     if (!gr_draw) {
